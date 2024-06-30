@@ -85,6 +85,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IQuestionService, QuestionManager>();
         services.AddScoped<ISessionService, SessionManager>();
         services.AddScoped<ISessionService, SessionManager>();
+        services.AddScoped<IHomeworkService, HomeworkManager>();
         return services;
     }
 

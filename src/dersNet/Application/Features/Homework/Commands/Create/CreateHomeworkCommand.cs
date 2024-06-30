@@ -43,7 +43,7 @@ public class CreateHomeworkCommand : IRequest<CreatedHomeworkResponse>, ISecured
 
         public async Task<CreatedHomeworkResponse> Handle(CreateHomeworkCommand request, CancellationToken cancellationToken)
         {
-            Homework homework = _mapper.Map<Homework>(request);
+            Domain.Entities.Homework homework = _mapper.Map<Domain.Entities.Homework>(request);
 
             await _homeworkRepository.AddAsync(homework);
 

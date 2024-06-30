@@ -3,6 +3,6 @@ using NArchitecture.Core.Persistence.Repositories;
 
 namespace Application.Services.Repositories;
 
-public interface IHomeworkRepository : IAsyncRepository<Homework, Guid>, IRepository<Homework, Guid>
+public interface IHomeworkRepository : IAsyncRepository<Domain.Entities.Homework, Guid>, IRepository<Domain.Entities.Homework, Guid>
 {
 }

@@ -14,14 +14,14 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Homework, CreateHomeworkCommand>().ReverseMap();
-        CreateMap<Homework, CreatedHomeworkResponse>().ReverseMap();
-        CreateMap<Homework, UpdateHomeworkCommand>().ReverseMap();
-        CreateMap<Homework, UpdatedHomeworkResponse>().ReverseMap();
-        CreateMap<Homework, DeleteHomeworkCommand>().ReverseMap();
-        CreateMap<Homework, DeletedHomeworkResponse>().ReverseMap();
-        CreateMap<Homework, GetByIdHomeworkResponse>().ReverseMap();
-        CreateMap<Homework, GetListHomeworkListItemDto>().ReverseMap();
-        CreateMap<IPaginate<Homework>, GetListResponse<GetListHomeworkListItemDto>>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, CreateHomeworkCommand>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, CreatedHomeworkResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, UpdateHomeworkCommand>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, UpdatedHomeworkResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, DeleteHomeworkCommand>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, DeletedHomeworkResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, GetByIdHomeworkResponse>().ReverseMap();
+        CreateMap<Domain.Entities.Homework, GetListHomeworkListItemDto>().ReverseMap();
+        CreateMap<IPaginate<Domain.Entities.Homework>, GetListResponse<GetListHomeworkListItemDto>>().ReverseMap();
     }
 }

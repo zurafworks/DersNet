@@ -30,7 +30,7 @@ public class GetByIdHomeworkQuery : IRequest<GetByIdHomeworkResponse>, ISecuredR
 
         public async Task<GetByIdHomeworkResponse> Handle(GetByIdHomeworkQuery request, CancellationToken cancellationToken)
         {
-            Homework? homework = await _homeworkRepository.GetAsync(predicate: h => h.Id == request.Id, cancellationToken: cancellationToken);
+            Domain.Entities.Homework? homework = await _homeworkRepository.GetAsync(predicate: h => h.Id == request.Id, cancellationToken: cancellationToken);
             await _homeworkBusinessRules.HomeworkShouldExistWhenSelected(homework);
 
             GetByIdHomeworkResponse response = _mapper.Map<GetByIdHomeworkResponse>(homework);

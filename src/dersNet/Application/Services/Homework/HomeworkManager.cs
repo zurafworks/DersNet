@@ -18,22 +18,22 @@ public class HomeworkManager : IHomeworkService
         _homeworkBusinessRules = homeworkBusinessRules;
     }
 
-    public async Task<Homework?> GetAsync(
-        Expression<Func<Homework, bool>> predicate,
-        Func<IQueryable<Homework>, IIncludableQueryable<Homework, object>>? include = null,
+    public async Task<Domain.Entities.Homework?> GetAsync(
+        Expression<Func<Domain.Entities.Homework, bool>> predicate,
+        Func<IQueryable<Domain.Entities.Homework>, IIncludableQueryable<Domain.Entities.Homework, object>>? include = null,
         bool withDeleted = false,
         bool enableTracking = true,
         CancellationToken cancellationToken = default
     )
     {
-        Homework? homework = await _homeworkRepository.GetAsync(predicate, include, withDeleted, enableTracking, cancellationToken);
+        Domain.Entities.Homework? homework = await _homeworkRepository.GetAsync(predicate, include, withDeleted, enableTracking, cancellationToken);
         return homework;
     }
 
-    public async Task<IPaginate<Homework>?> GetListAsync(
-        Expression<Func<Homework, bool>>? predicate = null,
-        Func<IQueryable<Homework>, IOrderedQueryable<Homework>>? orderBy = null,
-        Func<IQueryable<Homework>, IIncludableQueryable<Homework, object>>? include = null,
+    public async Task<IPaginate<Domain.Entities.Homework>?> GetListAsync(
+        Expression<Func<Domain.Entities.Homework, bool>>? predicate = null,
+        Func<IQueryable<Domain.Entities.Homework>, IOrderedQueryable<Domain.Entities.Homework>>? orderBy = null,
+        Func<IQueryable<Domain.Entities.Homework>, IIncludableQueryable<Domain.Entities.Homework, object>>? include = null,
         int index = 0,
         int size = 10,
         bool withDeleted = false,
@@ -41,7 +41,7 @@ public class HomeworkManager : IHomeworkService
         CancellationToken cancellationToken = default
     )
     {
-        IPaginate<Homework> homeworkList = await _homeworkRepository.GetListAsync(
+        IPaginate<Domain.Entities.Homework> homeworkList = await _homeworkRepository.GetListAsync(
             predicate,
             orderBy,
             include,
@@ -54,23 +54,23 @@ public class HomeworkManager : IHomeworkService
         return homeworkList;
     }
 
-    public async Task<Homework> AddAsync(Homework homework)
+    public async Task<Domain.Entities.Homework> AddAsync(Domain.Entities.Homework homework)
     {
-        Homework addedHomework = await _homeworkRepository.AddAsync(homework);
+        Domain.Entities.Homework addedHomework = await _homeworkRepository.AddAsync(homework);
 
         return addedHomework;
     }
 
-    public async Task<Homework> UpdateAsync(Homework homework)
+    public async Task<Domain.Entities.Homework> UpdateAsync(Domain.Entities.Homework homework)
     {
-        Homework updatedHomework = await _homeworkRepository.UpdateAsync(homework);
+        Domain.Entities.Homework updatedHomework = await _homeworkRepository.UpdateAsync(homework);
 
         return updatedHomework;
     }
 
-    public async Task<Homework> DeleteAsync(Homework homework, bool permanent = false)
+    public async Task<Domain.Entities.Homework> DeleteAsync(Domain.Entities.Homework homework, bool permanent = false)
     {
-        Homework deletedHomework = await _homeworkRepository.DeleteAsync(homework);
+        Domain.Entities.Homework deletedHomework = await _homeworkRepository.DeleteAsync(homework);
 
         return deletedHomework;
     }

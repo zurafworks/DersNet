@@ -44,7 +44,7 @@ public class UpdateHomeworkCommand : IRequest<UpdatedHomeworkResponse>, ISecured
 
         public async Task<UpdatedHomeworkResponse> Handle(UpdateHomeworkCommand request, CancellationToken cancellationToken)
         {
-            Homework? homework = await _homeworkRepository.GetAsync(predicate: h => h.Id == request.Id, cancellationToken: cancellationToken);
+            Domain.Entities.Homework? homework = await _homeworkRepository.GetAsync(predicate: h => h.Id == request.Id, cancellationToken: cancellationToken);
             await _homeworkBusinessRules.HomeworkShouldExistWhenSelected(homework);
             homework = _mapper.Map(request, homework);
 

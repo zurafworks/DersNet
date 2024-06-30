@@ -39,7 +39,7 @@ public class DeleteHomeworkCommand : IRequest<DeletedHomeworkResponse>, ISecured
 
         public async Task<DeletedHomeworkResponse> Handle(DeleteHomeworkCommand request, CancellationToken cancellationToken)
         {
-            Homework? homework = await _homeworkRepository.GetAsync(predicate: h => h.Id == request.Id, cancellationToken: cancellationToken);
+            Domain.Entities.Homework? homework = await _homeworkRepository.GetAsync(predicate: h => h.Id == request.Id, cancellationToken: cancellationToken);
             await _homeworkBusinessRules.HomeworkShouldExistWhenSelected(homework);
 
             await _homeworkRepository.DeleteAsync(homework!);

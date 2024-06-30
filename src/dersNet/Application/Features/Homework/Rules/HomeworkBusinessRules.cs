@@ -24,7 +24,7 @@ public class HomeworkBusinessRules : BaseBusinessRules
         throw new BusinessException(message);
     }
 
-    public async Task HomeworkShouldExistWhenSelected(Homework? homework)
+    public async Task HomeworkShouldExistWhenSelected(Domain.Entities.Homework? homework)
     {
         if (homework == null)
             await throwBusinessException(HomeworkBusinessMessages.HomeworkNotExists);
@@ -32,7 +32,7 @@ public class HomeworkBusinessRules : BaseBusinessRules
 
     public async Task HomeworkIdShouldExistWhenSelected(Guid id, CancellationToken cancellationToken)
     {
-        Homework? homework = await _homeworkRepository.GetAsync(
+        Domain.Entities.Homework? homework = await _homeworkRepository.GetAsync(
             predicate: h => h.Id == id,
             enableTracking: false,
             cancellationToken: cancellationToken

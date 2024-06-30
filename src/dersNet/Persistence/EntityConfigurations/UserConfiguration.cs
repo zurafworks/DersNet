@@ -47,6 +47,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                 {
                     Id = AdminId,
                     Email = "narch@kodlama.io",
+                    FirstName = "Admin",
+                    LastName ="Test",
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt
                 };

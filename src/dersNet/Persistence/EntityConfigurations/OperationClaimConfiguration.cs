@@ -305,6 +305,20 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
         
+        
+        #region Homework
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = HomeworkOperationClaims.Admin },
+                new() { Id = ++lastId, Name = HomeworkOperationClaims.Read },
+                new() { Id = ++lastId, Name = HomeworkOperationClaims.Write },
+                new() { Id = ++lastId, Name = HomeworkOperationClaims.Create },
+                new() { Id = ++lastId, Name = HomeworkOperationClaims.Update },
+                new() { Id = ++lastId, Name = HomeworkOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

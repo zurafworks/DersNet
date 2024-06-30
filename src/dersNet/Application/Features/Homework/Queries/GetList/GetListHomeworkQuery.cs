@@ -36,7 +36,7 @@ public class GetListHomeworkQuery : IRequest<GetListResponse<GetListHomeworkList
 
         public async Task<GetListResponse<GetListHomeworkListItemDto>> Handle(GetListHomeworkQuery request, CancellationToken cancellationToken)
         {
-            IPaginate<Homework> homework = await _homeworkRepository.GetListAsync(
+            IPaginate<Domain.Entities.Homework> homework = await _homeworkRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize, 
                 cancellationToken: cancellationToken
