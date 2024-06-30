@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Application.Services.AuthenticatorService;
 using Application.Services.AuthService;
 using Application.Services.UsersService;
@@ -19,6 +19,18 @@ using NArchitecture.Core.Localization.Resource.Yaml.DependencyInjection;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
+using Application.Services.Choices;
+using Application.Services.Courses;
+using Application.Services.Exams;
+using Application.Services.ExamQuestions;
+using Application.Services.Groups;
+using Application.Services.GroupUsers;
+using Application.Services.Homework;
+using Application.Services.HomeworkTransfers;
+using Application.Services.Lessons;
+using Application.Services.Packs;
+using Application.Services.Questions;
+using Application.Services.Sessions;
 
 namespace Application;
 
@@ -59,6 +71,20 @@ public static class ApplicationServiceRegistration
 
         services.AddSecurityServices<Guid, int>();
 
+        services.AddScoped<IChoiceService, ChoiceManager>();
+        services.AddScoped<ICourseService, CourseManager>();
+        services.AddScoped<IExamService, ExamManager>();
+        services.AddScoped<IExamQuestionService, ExamQuestionManager>();
+        services.AddScoped<IGroupService, GroupManager>();
+        services.AddScoped<IGroupService, GroupManager>();
+        services.AddScoped<IGroupUserService, GroupUserManager>();
+        services.AddScoped<IHomeworkService, HomeworkManager>();
+        services.AddScoped<IHomeworkTransferService, HomeworkTransferManager>();
+        services.AddScoped<ILessonService, LessonManager>();
+        services.AddScoped<IPackService, PackManager>();
+        services.AddScoped<IQuestionService, QuestionManager>();
+        services.AddScoped<ISessionService, SessionManager>();
+        services.AddScoped<ISessionService, SessionManager>();
         return services;
     }
 

@@ -15,6 +15,7 @@ using NArchitecture.Core.Security.WebApi.Swagger.Extensions;
 using Persistence;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using WebAPI;
+using WebAPI.Helpers.Caching;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -52,8 +53,14 @@ builder
             IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
         };
     });
-
-builder.Services.AddDistributedMemoryCache();
+//burada redis sunucu adresi appsetting'e taþýnacak.
+#region IF REDIS SERVER IS AVAILABLE
+var redisIsAvaible = CacheHelper.CheckRedisAvailability("localhost:6379");
+if (redisIsAvaible)
+    builder.Services.AddStackExchangeRedisCache(opt => opt.Configuration = "localhost:6379");
+else
+    builder.Services.AddDistributedMemoryCache();
+#endregion
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(opt =>
