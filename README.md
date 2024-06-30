@@ -2,7 +2,7 @@
 </p><br />
 
 <p align="center">
-  <a href="https://github.com/zurafworks/DersNet"><img src="~/beyazustusiyahzurafworks.png" height="125"></a>
+  <a href="https://github.com/zurafworks/DersNet"><img src="beyazustusiyahzurafworks.png" height="125"></a>
   <h3 align="center">DersNet Project
 </h3>
 </p>
