@@ -6,6 +6,7 @@ using Application.Features.Lessons.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Lessons.Queries.GetListWithParent;
 
 namespace WebAPI.Controllers;
 
@@ -49,6 +50,14 @@ public class LessonsController : BaseController
     {
         GetListLessonQuery getListLessonQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListLessonListItemDto> response = await Mediator.Send(getListLessonQuery);
+        return Ok(response);
+    }
+    //[Route("/GetListLessonWithParent")]
+    [HttpPost("GetListWithParent")]
+    public async Task<IActionResult> GetListWithParent([FromBody] PageRequest pageRequest)
+    {
+        GetListWithParentQuery getListLessonWithParentQuery = new() { PageRequest = pageRequest };
+        GetListResponse<GetListWithParentItemDto> response = await Mediator.Send(getListLessonWithParentQuery);
         return Ok(response);
     }
 }

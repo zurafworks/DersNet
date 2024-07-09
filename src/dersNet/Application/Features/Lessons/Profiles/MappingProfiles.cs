@@ -7,6 +7,7 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
+using Application.Features.Lessons.Queries.GetListWithParent;
 
 namespace Application.Features.Lessons.Profiles;
 
@@ -23,5 +24,7 @@ public class MappingProfiles : Profile
         CreateMap<Lesson, GetByIdLessonResponse>().ReverseMap();
         CreateMap<Lesson, GetListLessonListItemDto>().ReverseMap();
         CreateMap<IPaginate<Lesson>, GetListResponse<GetListLessonListItemDto>>().ReverseMap();
+
+        CreateMap<IPaginate<GetListWithParentItemDto>, GetListResponse<GetListWithParentItemDto>>().ReverseMap();
     }
 }

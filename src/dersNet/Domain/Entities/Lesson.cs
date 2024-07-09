@@ -16,7 +16,7 @@ public class Lesson : Entity<Guid>
     /// <summary>
     /// Bağlı olduğu üst başlık
     /// </summary>
-    public Guid ParentId { get; set; } = default!;
+    public Guid? ParentId { get; set; } = default!;
 
     /// <summary>
     /// derinlik

@@ -13,6 +13,7 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class PacksController : BaseController
 {
+    [Route("/add-packs")]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] CreatePackCommand createPackCommand)
     {
@@ -21,7 +22,8 @@ public class PacksController : BaseController
         return Created(uri: "", response);
     }
 
-    [HttpPut]
+    [Route("/update-packs")]
+    [HttpPost]
     public async Task<IActionResult> Update([FromBody] UpdatePackCommand updatePackCommand)
     {
         UpdatedPackResponse response = await Mediator.Send(updatePackCommand);
@@ -29,23 +31,24 @@ public class PacksController : BaseController
         return Ok(response);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    [Route("/delete-packs")]
+    [HttpPost]
+    public async Task<IActionResult> Delete([FromBody] Guid id)
     {
         DeletedPackResponse response = await Mediator.Send(new DeletePackCommand { Id = id });
 
         return Ok(response);
     }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    [Route("/getbyid-packs/{id}")]
+    [HttpPost]
+    public async Task<IActionResult> GetById([FromBody] Guid id)
     {
         GetByIdPackResponse response = await Mediator.Send(new GetByIdPackQuery { Id = id });
         return Ok(response);
     }
-
-    [HttpGet]
-    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+    [Route("/getlist-packs")]
+    [HttpPost]
+    public async Task<IActionResult> GetList([FromBody] PageRequest pageRequest)
     {
         GetListPackQuery getListPackQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListPackListItemDto> response = await Mediator.Send(getListPackQuery);
