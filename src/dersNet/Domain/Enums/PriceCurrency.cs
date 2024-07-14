@@ -7,4 +7,5 @@ using System.Threading.Tasks;
 namespace Domain.Enums;
 public enum PriceCurrency
 {
+    TL = 1,
 }

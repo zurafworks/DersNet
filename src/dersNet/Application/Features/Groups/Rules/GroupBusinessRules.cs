@@ -4,6 +4,7 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
+using Application.Features.Groups.Queries.GetById;
 
 namespace Application.Features.Groups.Rules;
 
@@ -38,5 +39,10 @@ public class GroupBusinessRules : BaseBusinessRules
             cancellationToken: cancellationToken
         );
         await GroupShouldExistWhenSelected(group);
+    }
+    public async Task GroupItemDtoShouldExistWhenSelected(GetByIdGroupResponse? groupResponse)
+    {
+        if (groupResponse == null)
+            await throwBusinessException(GroupsBusinessMessages.GroupNotExists);
     }
 }

@@ -24,13 +24,14 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
 
     }
+    public static Guid lessonIdLise = Guid.NewGuid();
     private IEnumerable<Lesson> _seeds
     {
         get
         {
             List<Lesson> seeds = new List<Lesson>();
 
-            var lessonIdLise = Guid.NewGuid();
+            //var lessonIdLise = Guid.NewGuid();
             Lesson lise = new()
             {
                 Id = lessonIdLise,
@@ -325,9 +326,7 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
                 CreatedDate = DateTime.Now,
             });
 
-                };
-            seeds.Add(lesson1);
-            seeds.Add(lesson2);
+                
             return seeds;
         }
     }

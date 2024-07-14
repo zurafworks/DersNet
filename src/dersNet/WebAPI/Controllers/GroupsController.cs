@@ -37,8 +37,8 @@ public class GroupsController : BaseController
         return Ok(response);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] Guid? id)
     {
         GetByIdGroupResponse response = await Mediator.Send(new GetByIdGroupQuery { Id = id });
         return Ok(response);

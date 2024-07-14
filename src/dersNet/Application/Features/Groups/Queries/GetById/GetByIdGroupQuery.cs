@@ -11,7 +11,7 @@ namespace Application.Features.Groups.Queries.GetById;
 
 public class GetByIdGroupQuery : IRequest<GetByIdGroupResponse>, ISecuredRequest
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
 
     public string[] Roles => [Admin, Read];
 
@@ -30,11 +30,12 @@ public class GetByIdGroupQuery : IRequest<GetByIdGroupResponse>, ISecuredRequest
 
         public async Task<GetByIdGroupResponse> Handle(GetByIdGroupQuery request, CancellationToken cancellationToken)
         {
-            Group? group = await _groupRepository.GetAsync(predicate: g => g.Id == request.Id, cancellationToken: cancellationToken);
-            await _groupBusinessRules.GroupShouldExistWhenSelected(group);
+            //Group? group = await _groupRepository.GetAsync(predicate: g => g.Id == request.Id, cancellationToken: cancellationToken);
+            GetByIdGroupResponse groupReponse = await _groupRepository.GetGroupResponseWithLessonsAndPacks(request.Id);
+            await _groupBusinessRules.GroupItemDtoShouldExistWhenSelected(groupReponse);
 
-            GetByIdGroupResponse response = _mapper.Map<GetByIdGroupResponse>(group);
-            return response;
+            //GetByIdGroupResponse response = _mapper.Map<GetByIdGroupResponse>(group);
+            return groupReponse;
         }
     }
 }
