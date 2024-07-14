@@ -6,6 +6,7 @@ using Application.Features.ExamQuestions.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.ExamQuestions.Queries.GetListQuestinWithExam;
 
 namespace WebAPI.Controllers;
 
@@ -49,6 +50,13 @@ public class ExamQuestionsController : BaseController
     {
         GetListExamQuestionQuery getListExamQuestionQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListExamQuestionListItemDto> response = await Mediator.Send(getListExamQuestionQuery);
+        return Ok(response);
+    }
+    
+    [HttpGet("GetListQuestinWithExam")]
+    public async Task<IActionResult> GetListQuestinWithExam([FromQuery] GetListQuestinWithExamQuery getListQuestinWithExamQuery)
+    {
+        GetListQuestinWithExamResponse response = await Mediator.Send(getListQuestinWithExamQuery);
         return Ok(response);
     }
 }

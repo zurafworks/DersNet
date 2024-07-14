@@ -14,7 +14,7 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class LessonsController : BaseController
 {
-    [HttpPost]
+    [HttpPost("Add")]
     public async Task<IActionResult> Add([FromBody] CreateLessonCommand createLessonCommand)
     {
         CreatedLessonResponse response = await Mediator.Send(createLessonCommand);
@@ -22,7 +22,7 @@ public class LessonsController : BaseController
         return Created(uri: "", response);
     }
 
-    [HttpPut]
+    [HttpPost("Update")]
     public async Task<IActionResult> Update([FromBody] UpdateLessonCommand updateLessonCommand)
     {
         UpdatedLessonResponse response = await Mediator.Send(updateLessonCommand);
@@ -30,8 +30,8 @@ public class LessonsController : BaseController
         return Ok(response);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    [HttpPost("Delete")]
+    public async Task<IActionResult> Delete([FromBody] Guid id)
     {
         DeletedLessonResponse response = await Mediator.Send(new DeleteLessonCommand { Id = id });
 
@@ -45,8 +45,8 @@ public class LessonsController : BaseController
         return Ok(response);
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+    [HttpPost("GetList")]
+    public async Task<IActionResult> GetList([FromBody] PageRequest pageRequest)
     {
         GetListLessonQuery getListLessonQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetListLessonListItemDto> response = await Mediator.Send(getListLessonQuery);
