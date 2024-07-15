@@ -45,4 +45,10 @@ public class GroupBusinessRules : BaseBusinessRules
         if (groupResponse == null)
             await throwBusinessException(GroupsBusinessMessages.GroupNotExists);
     }
+
+    public async Task OrderItemDtoShouldExistWhenSelected(int Order)
+    {
+        if (Order <= 0)
+            await throwBusinessException(GroupsBusinessMessages.OrderNotExists);
+    }
 }

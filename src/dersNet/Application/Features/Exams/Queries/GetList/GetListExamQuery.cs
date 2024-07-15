@@ -36,11 +36,7 @@ public class GetListExamQuery : IRequest<GetListResponse<GetListExamListItemDto>
 
         public async Task<GetListResponse<GetListExamListItemDto>> Handle(GetListExamQuery request, CancellationToken cancellationToken)
         {
-            IPaginate<Exam> exams = await _examRepository.GetListAsync(
-                index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
-                cancellationToken: cancellationToken
-            );
+            IPaginate<GetListExamListItemDto> exams = await _examRepository.GetExamList(request.PageRequest.PageIndex, request.PageRequest.PageSize, cancellationToken);
 
             GetListResponse<GetListExamListItemDto> response = _mapper.Map<GetListResponse<GetListExamListItemDto>>(exams);
             return response;

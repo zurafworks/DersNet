@@ -21,7 +21,7 @@ public class GroupUserRepository : EfRepositoryBase<GroupUser, Guid, BaseDbConte
                     join G in Context.Groups.DefaultIfEmpty()
                     on GU.Id equals G.Id
                     join U in Context.Users.DefaultIfEmpty() on GU.Id equals U.Id
-
+                    
                     select new GetListGroupUserListItemDto
                     {
                         Id = GU.Id,

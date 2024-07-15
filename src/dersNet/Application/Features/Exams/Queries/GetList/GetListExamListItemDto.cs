@@ -6,6 +6,7 @@ public class GetListExamListItemDto : IDto
 {
     public Guid Id { get; set; }
     public Guid LessonId { get; set; }
+    public string LessonTitle { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public TimeSpan Duration { get; set; }
