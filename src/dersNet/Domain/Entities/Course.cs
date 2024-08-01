@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities;
+//BAŞLIK OLARAK DERSLERİMİZ
 public class Course : Entity<Guid>
 {
     /// <summary>

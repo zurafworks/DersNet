@@ -31,6 +31,8 @@ using Application.Services.Lessons;
 using Application.Services.Packs;
 using Application.Services.Questions;
 using Application.Services.Sessions;
+using Application.Services.OnBasvurus;
+using Application.Services.PackCourses;
 
 namespace Application;
 
@@ -86,6 +88,8 @@ public static class ApplicationServiceRegistration
         services.AddScoped<ISessionService, SessionManager>();
         services.AddScoped<ISessionService, SessionManager>();
         services.AddScoped<IHomeworkService, HomeworkManager>();
+        services.AddScoped<IOnBasvuruService, OnBasvuruManager>();
+        services.AddScoped<IPackCourseService, PackCourseManager>();
         return services;
     }
 

@@ -37,6 +37,8 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ISessionRepository, SessionRepository>();
         services.AddScoped<ISessionRepository, SessionRepository>();
         services.AddScoped<IHomeworkRepository, HomeworkRepository>();
+        services.AddScoped<IOnBasvuruRepository, OnBasvuruRepository>();
+        services.AddScoped<IPackCourseRepository, PackCourseRepository>();
         return services;
     }
 }

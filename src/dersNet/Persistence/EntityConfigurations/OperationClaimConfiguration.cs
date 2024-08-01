@@ -18,6 +18,8 @@ using Application.Features.Lessons.Constants;
 using Application.Features.Packs.Constants;
 using Application.Features.Questions.Constants;
 using Application.Features.Sessions.Constants;
+using Application.Features.OnBasvurus.Constants;
+using Application.Features.PackCourses.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -321,6 +323,34 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         
         featureOperationClaims.Add(new() { Id = ++lastId, Name = LessonsOperationClaims.GetListWithParent });
         featureOperationClaims.Add(new() { Id = ++lastId, Name = ExamQuestionsOperationClaims.GetListQuestinWithExam });
+        
+        #region OnBasvurus
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = OnBasvurusOperationClaims.Admin },
+                new() { Id = ++lastId, Name = OnBasvurusOperationClaims.Read },
+                new() { Id = ++lastId, Name = OnBasvurusOperationClaims.Write },
+                new() { Id = ++lastId, Name = OnBasvurusOperationClaims.Create },
+                new() { Id = ++lastId, Name = OnBasvurusOperationClaims.Update },
+                new() { Id = ++lastId, Name = OnBasvurusOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region PackCourses
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = PackCoursesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = PackCoursesOperationClaims.Read },
+                new() { Id = ++lastId, Name = PackCoursesOperationClaims.Write },
+                new() { Id = ++lastId, Name = PackCoursesOperationClaims.Create },
+                new() { Id = ++lastId, Name = PackCoursesOperationClaims.Update },
+                new() { Id = ++lastId, Name = PackCoursesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

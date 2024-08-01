@@ -26,6 +26,8 @@ public class BaseDbContext : DbContext
     public DbSet<Pack> Packs { get; set; }
     public DbSet<Question> Questions { get; set; }
     public DbSet<Session> Sessions { get; set; }
+    public DbSet<OnBasvuru> OnBasvurus { get; set; }
+    public DbSet<PackCourse> PackCourses { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

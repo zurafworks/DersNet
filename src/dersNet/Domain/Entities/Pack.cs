@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities;
+//TODO: RESIM EKLENECEK
 public class Pack : Entity<Guid>
 {
     /// <summary>
