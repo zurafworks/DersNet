@@ -7,6 +7,7 @@ using AutoMapper;
 using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
+using Application.Features.OnBasvurus.Queries.GetListWithStrings;
 
 namespace Application.Features.OnBasvurus.Profiles;
 
@@ -23,5 +24,7 @@ public class MappingProfiles : Profile
         CreateMap<OnBasvuru, GetByIdOnBasvuruResponse>().ReverseMap();
         CreateMap<OnBasvuru, GetListOnBasvuruListItemDto>().ReverseMap();
         CreateMap<IPaginate<OnBasvuru>, GetListResponse<GetListOnBasvuruListItemDto>>().ReverseMap();
+
+        CreateMap<IPaginate<GetListOnBasvuruWithStringsListItemDto>, GetListResponse<GetListOnBasvuruWithStringsListItemDto>>().ReverseMap();
     }
 }

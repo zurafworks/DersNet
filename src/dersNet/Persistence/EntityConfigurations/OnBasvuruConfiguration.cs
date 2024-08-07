@@ -21,6 +21,7 @@ public class OnBasvuruConfiguration : IEntityTypeConfiguration<OnBasvuru>
         builder.Property(ob => ob.OkulAdi).HasColumnName("OkulAdi");
         builder.Property(ob => ob.VeliCepNo).HasColumnName("VeliCepNo");
         builder.Property(ob => ob.OgrCepNo).HasColumnName("OgrCepNo");
+        builder.Property(ob => ob.OgrEmail).HasColumnName("OgrEmail");
         builder.Property(ob => ob.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(ob => ob.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(ob => ob.DeletedDate).HasColumnName("DeletedDate");

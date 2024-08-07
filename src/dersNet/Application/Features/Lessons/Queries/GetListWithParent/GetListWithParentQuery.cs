@@ -12,7 +12,7 @@ using Application.Services.Repositories;
 
 namespace Application.Features.Lessons.Queries.GetListWithParent;
 
-public class GetListWithParentQuery : IRequest<GetListResponse<GetListWithParentItemDto>>, ISecuredRequest, ICachableRequest, ILoggableRequest
+public class GetListWithParentQuery : IRequest<GetListResponse<GetListWithParentItemDto>>/*, ISecuredRequest*/,ICachableRequest, ILoggableRequest
 {
 
     public PageRequest PageRequest { get; set; }

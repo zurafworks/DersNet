@@ -12,7 +12,7 @@ using static Application.Features.OnBasvurus.Constants.OnBasvurusOperationClaims
 
 namespace Application.Features.OnBasvurus.Commands.Create;
 
-public class CreateOnBasvuruCommand : IRequest<CreatedOnBasvuruResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class CreateOnBasvuruCommand : IRequest<CreatedOnBasvuruResponse>,/* ISecuredRequest,*/ ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid PackId { get; set; }
     public Guid LessonId { get; set; }
@@ -24,6 +24,7 @@ public class CreateOnBasvuruCommand : IRequest<CreatedOnBasvuruResponse>, ISecur
     public string OkulAdi { get; set; }
     public string VeliCepNo { get; set; }
     public string OgrCepNo { get; set; }
+    public string OgrEmail { get; set; }
 
     public string[] Roles => [Admin, Write, OnBasvurusOperationClaims.Create];
 

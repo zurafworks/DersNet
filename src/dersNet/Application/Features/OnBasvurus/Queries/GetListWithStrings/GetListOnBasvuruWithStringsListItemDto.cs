@@ -1,15 +1,18 @@
-using Application.Features.Courses.Queries.GetList;
-using NArchitecture.Core.Application.Responses;
+ï»¿using NArchitecture.Core.Application.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Application.Features.OnBasvurus.Queries.GetById;
-
-public class GetByIdOnBasvuruResponse : IResponse
+namespace Application.Features.OnBasvurus.Queries.GetListWithStrings;
+public class GetListOnBasvuruWithStringsListItemDto : IDto
 {
     public Guid Id { get; set; }
     public Guid PackId { get; set; }
-    public string PackTitle { get; set; }//Paket'in baþlýðý
+    public string PackName { get; set; }
     public Guid LessonId { get; set; }
-    public string LessonTitle { get; set; }//Öðrencinin eðitim düzeyini gösteren bilgi.
+    public string LessonName { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string VeliFirstName { get; set; }
@@ -19,5 +22,4 @@ public class GetByIdOnBasvuruResponse : IResponse
     public string VeliCepNo { get; set; }
     public string OgrCepNo { get; set; }
     public string OgrEmail { get; set; }
-    public List<GetListCourseListItemDto> Courses { get; set; } = default!;
 }

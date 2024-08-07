@@ -15,4 +15,5 @@ public class UpdatedOnBasvuruResponse : IResponse
     public string OkulAdi { get; set; }
     public string VeliCepNo { get; set; }
     public string OgrCepNo { get; set; }
+    public string OgrEmail { get; set; }
 }

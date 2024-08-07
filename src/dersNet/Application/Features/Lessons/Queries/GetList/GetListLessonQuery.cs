@@ -12,7 +12,7 @@ using static Application.Features.Lessons.Constants.LessonsOperationClaims;
 
 namespace Application.Features.Lessons.Queries.GetList;
 
-public class GetListLessonQuery : IRequest<GetListResponse<GetListLessonListItemDto>>, ISecuredRequest, ICachableRequest
+public class GetListLessonQuery : IRequest<GetListResponse<GetListLessonListItemDto>>, /*ISecuredRequest,*/ ICachableRequest
 {
     public PageRequest PageRequest { get; set; }
 

@@ -1,8 +1,11 @@
 using Application.Features.Courses.Queries.GetList;
+using Application.Features.Lessons.Queries.GetListWithParent;
 using Application.Features.OnBasvurus.Queries.GetById;
+using Application.Features.OnBasvurus.Queries.GetListWithStrings;
 using Application.Services.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using NArchitecture.Core.Persistence.Paging;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
 
@@ -12,6 +15,31 @@ public class OnBasvuruRepository : EfRepositoryBase<OnBasvuru, Guid, BaseDbConte
 {
     public OnBasvuruRepository(BaseDbContext context) : base(context)
     {
+    }
+
+    public async Task<IPaginate<GetListOnBasvuruWithStringsListItemDto>> GetListOnBasvuruWithStringsPaginateAsync(int index, int size, CancellationToken cancellationToken)
+    {
+        var query = from onBasvuru in Context.OnBasvurus
+                    join pack in Context.Packs on onBasvuru.PackId equals pack.Id 
+                    join lesson in Context.Lessons on onBasvuru.LessonId equals lesson.Id 
+                    select new GetListOnBasvuruWithStringsListItemDto
+                    {
+                        Id = onBasvuru.Id,
+                        PackId = onBasvuru.PackId,
+                        PackName = pack.Title,
+                        LessonId = onBasvuru.LessonId,
+                        LessonName = lesson.Title,
+                        FirstName = onBasvuru.FirstName,
+                        LastName = onBasvuru.LastName,
+                        VeliFirstName = onBasvuru.VeliFirstName,
+                        VeliLastName = onBasvuru.VeliLastName,
+                        NotOrtalamasi = onBasvuru.NotOrtalamasi,
+                        OkulAdi = onBasvuru.OkulAdi,
+                        VeliCepNo = onBasvuru.VeliCepNo,
+                        OgrCepNo = onBasvuru.OgrCepNo,
+                        OgrEmail = onBasvuru.OgrEmail,
+                    };
+        return await query.ToPaginateAsync(index, size, cancellationToken: cancellationToken);
     }
 
     public async Task<GetByIdOnBasvuruResponse> GetByIdOnBasvuruAsync(Guid id)
@@ -59,6 +87,7 @@ public class OnBasvuruRepository : EfRepositoryBase<OnBasvuru, Guid, BaseDbConte
             PackTitle = basvuru.P.Title,
             NotOrtalamasi = basvuru.B.NotOrtalamasi,
             OgrCepNo = basvuru.B.OgrCepNo,
+            OgrEmail = basvuru.B.OgrEmail,
             OkulAdi = basvuru.B.OkulAdi,
             VeliCepNo = basvuru.B.VeliCepNo,
             VeliFirstName = basvuru.B.VeliFirstName,

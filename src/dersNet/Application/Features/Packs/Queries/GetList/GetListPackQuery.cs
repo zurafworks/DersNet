@@ -12,7 +12,7 @@ using static Application.Features.Packs.Constants.PacksOperationClaims;
 
 namespace Application.Features.Packs.Queries.GetList;
 
-public class GetListPackQuery : IRequest<GetListResponse<GetListPackListItemDto>>, ISecuredRequest, ICachableRequest
+public class GetListPackQuery : IRequest<GetListResponse<GetListPackListItemDto>>/*, ISecuredRequest*/, ICachableRequest
 {
     public PageRequest PageRequest { get; set; }
 

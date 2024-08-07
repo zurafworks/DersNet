@@ -9,7 +9,7 @@ using static Application.Features.Packs.Constants.PacksOperationClaims;
 
 namespace Application.Features.Packs.Queries.GetById;
 
-public class GetByIdPackQuery : IRequest<GetByIdPackResponse>, ISecuredRequest
+public class GetByIdPackQuery : IRequest<GetByIdPackResponse>//, ISecuredRequest
 {
     public Guid Id { get; set; }
 

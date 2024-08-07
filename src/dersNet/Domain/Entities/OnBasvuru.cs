@@ -18,4 +18,5 @@ public class OnBasvuru : Entity<Guid>
     public string OkulAdi { get; set; }//Ogrencinin okulunun adı
     public string VeliCepNo { get; set; }//Öğrencinin velisinin telefon numarası
     public string OgrCepNo { get; set; }//Öğrencinin telefon numarası
+    public string OgrEmail { get; set; }//Öğrencinin mail adresi
 }

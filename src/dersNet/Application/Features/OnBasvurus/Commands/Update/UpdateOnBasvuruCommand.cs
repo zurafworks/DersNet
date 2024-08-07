@@ -25,6 +25,7 @@ public class UpdateOnBasvuruCommand : IRequest<UpdatedOnBasvuruResponse>, ISecur
     public string OkulAdi { get; set; }
     public string VeliCepNo { get; set; }
     public string OgrCepNo { get; set; }
+    public string OgrEmail { get; set; }
 
     public string[] Roles => [Admin, Write, OnBasvurusOperationClaims.Update];
 

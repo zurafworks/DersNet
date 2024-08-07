@@ -16,5 +16,6 @@ public class CreateOnBasvuruCommandValidator : AbstractValidator<CreateOnBasvuru
         RuleFor(c => c.OkulAdi).NotEmpty();
         RuleFor(c => c.VeliCepNo).NotEmpty();
         RuleFor(c => c.OgrCepNo).NotEmpty();
+        RuleFor(c => c.OgrEmail).NotEmpty();
     }
 }
