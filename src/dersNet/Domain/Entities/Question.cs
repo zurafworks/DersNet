@@ -16,10 +16,10 @@ public class Question : Entity<Guid>
     /// <summary>
     /// Soru cümlesi (text editor ile yapılacak ve json formatında tutualcak)
     /// </summary>
-    public string Text { get; set; } //devextreme text editor json
+    public string? Text { get; set; } //devextreme text editor json
 
     /// <summary>
     /// soru resmi veya resimleri (çoklu resim olması dahilinde , ile split olabilecek)
     /// </summary>
-    public string Image { get; set; } //split edilebilir
+    public string? Image { get; set; } //split edilebilir
 }

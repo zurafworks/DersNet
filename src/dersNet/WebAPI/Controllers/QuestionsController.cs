@@ -6,6 +6,7 @@ using Application.Features.Questions.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Questions.Queries.GetListWithChoices;
 
 namespace WebAPI.Controllers;
 
@@ -51,4 +52,29 @@ public class QuestionsController : BaseController
         GetListResponse<GetListQuestionListItemDto> response = await Mediator.Send(getListQuestionQuery);
         return Ok(response);
     }
+
+    [HttpPost("GetWithChoices")]
+    public async Task<IActionResult> GetListWithChoices([FromBody] PageRequest pageRequest)
+    {
+        GetListQuestionWithChoicesQuery getListQuestionWithChoicesQuery = new() { PageRequest = pageRequest };
+        GetListResponse<GetListQuestionWithChoicesListItemDto> response = await Mediator.Send(getListQuestionWithChoicesQuery);
+        return Ok(response);
+    }
+
+    [HttpPost("AddWithChoices")]
+    public async Task<IActionResult> AddWithChoices([FromBody] CreateQuestionWithChoicesCommand createQuestionCommand)
+    {
+        CreatedQuestionWithChoicesResponse response = await Mediator.Send(createQuestionCommand);
+
+        return Created(uri: "", response);
+    }
+
+    [HttpPut("UpdateWithChoices")]
+    public async Task<IActionResult> UpdateWithChoices([FromBody] UpdateQuestionWithChoicesCommand updateQuestionCommand)
+    {
+        UpdatedQuestionWithChoicesResponse response = await Mediator.Send(updateQuestionCommand);
+
+        return Ok(response);
+    }
+
 }

@@ -12,7 +12,18 @@ public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<BaseDbContext>(options => options.UseInMemoryDatabase("BaseDb"));
+        //services.AddDbContext<BaseDbContext>(options => options.UseInMemoryDatabase("BaseDb"));
+
+        //services.AddDbContext<BaseDbContext>(options =>
+        //    options.UseSqlServer(configuration.GetConnectionString("DevelopmentDb")));
+
+        //services.AddDbContext<BaseDbContext>(options =>
+        //    options.UseSqlServer(configuration.GetConnectionString("LocalTestDb")));
+
+        services.AddDbContext<BaseDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("ProductionDb")));
+
+
         services.AddDbMigrationApplier(buildServices => buildServices.GetRequiredService<BaseDbContext>());
 
         services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
@@ -39,6 +50,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IHomeworkRepository, HomeworkRepository>();
         services.AddScoped<IOnBasvuruRepository, OnBasvuruRepository>();
         services.AddScoped<IPackCourseRepository, PackCourseRepository>();
+        services.AddScoped<FilterHelper, FilterHelper>();
         return services;
     }
 }

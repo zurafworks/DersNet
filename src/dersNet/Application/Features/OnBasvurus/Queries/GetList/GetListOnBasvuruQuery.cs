@@ -18,7 +18,7 @@ public class GetListOnBasvuruQuery : IRequest<GetListResponse<GetListOnBasvuruLi
 
     public string[] Roles => [Admin, Read];
 
-    public bool BypassCache { get; }
+    public bool BypassCache { get; } = true;
     public string? CacheKey => $"GetListOnBasvurus({PageRequest.PageIndex},{PageRequest.PageSize})";
     public string? CacheGroupKey => "GetOnBasvurus";
     public TimeSpan? SlidingExpiration { get; }

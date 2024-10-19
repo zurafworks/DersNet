@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities;
+
 public class Group : Entity<Guid>
 {
     /// <summary>

@@ -6,6 +6,8 @@ using Application.Features.Packs.Queries.GetList;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Packs.Queries.GetListByFilter;
+using WebAPI.Controllers.Dtos;
 
 namespace WebAPI.Controllers;
 
@@ -28,22 +30,30 @@ public class PacksController : BaseController
         return Ok(response);
     }
     [HttpPost("Delete")]
-    public async Task<IActionResult> Delete([FromBody] Guid id)
+    public async Task<IActionResult> Delete([FromBody] GetByIdRequestDto request)
     {
-        DeletedPackResponse response = await Mediator.Send(new DeletePackCommand { Id = id });
+        DeletedPackResponse response = await Mediator.Send(new DeletePackCommand { Id = request.id});
 
         return Ok(response);
     }
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    [HttpPost("Get")]
+    public async Task<IActionResult> GetById([FromBody] GetByIdRequestDto request)
     {
-        GetByIdPackResponse response = await Mediator.Send(new GetByIdPackQuery { Id = id });
+        GetByIdPackResponse response = await Mediator.Send(new GetByIdPackQuery { Id = request.id });
         return Ok(response);
     }
     [HttpPost("GetList")]
     public async Task<IActionResult> GetList([FromBody] PageRequest pageRequest)
     {
         GetListPackQuery getListPackQuery = new() { PageRequest = pageRequest };
+        GetListResponse<GetListPackListItemDto> response = await Mediator.Send(getListPackQuery);
+        return Ok(response);
+    }
+
+    [HttpPost("GetListByFilter")]
+    public async Task<IActionResult> GetListByFilter([FromBody] GetListByFilterQueryDto request)
+    {
+        GetListPackByFilterQuery getListPackQuery = new() { Request = request };
         GetListResponse<GetListPackListItemDto> response = await Mediator.Send(getListPackQuery);
         return Ok(response);
     }

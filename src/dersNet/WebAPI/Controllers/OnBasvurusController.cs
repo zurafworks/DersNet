@@ -8,6 +8,7 @@ using NArchitecture.Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Application.Features.Lessons.Queries.GetListWithParent;
 using Application.Features.OnBasvurus.Queries.GetListWithStrings;
+using WebAPI.Controllers.Dtos;
 
 namespace WebAPI.Controllers;
 
@@ -31,9 +32,10 @@ public class OnBasvurusController : BaseController
         return Ok(response);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    [HttpPost("Delete")]
+    public async Task<IActionResult> Delete([FromBody] GetByIdRequestDto request)
     {
+        var id = request.id;
         DeletedOnBasvuruResponse response = await Mediator.Send(new DeleteOnBasvuruCommand { Id = id });
 
         return Ok(response);

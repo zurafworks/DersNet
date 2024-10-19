@@ -18,16 +18,16 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
         builder.Property(g => g.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(g => g.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(g => g.DeletedDate).HasColumnName("DeletedDate");
-        builder.HasData(_seedData());
+        //builder.HasData(_seedData());
         builder.HasQueryFilter(g => !g.DeletedDate.HasValue);
     }
-    public List<Group> _seedData()
-    {
-        var seedData = new List<Group>()
-        {
-            new Group(){Id = Guid.NewGuid(), LessonId = LessonConfiguration.lessonIdLise, Name = "Grup Yorum", PackId = PackConfiguration.TestId,Quota=10,CreatedDate=DateTime.Now }
+    //public List<Group> _seedData()
+    //{
+    //    var seedData = new List<Group>()
+    //    {
+    //        new Group(){Id = Guid.NewGuid(), LessonId = LessonConfiguration.liseId, Name = "Grup Yorum", PackId = PackConfiguration.TestId,Quota=10,CreatedDate=DateTime.Now }
 
-        };
-        return seedData;
-    }
+    //    };
+    //    return seedData;
+    //}
 }

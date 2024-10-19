@@ -12,8 +12,8 @@ public class ChoiceConfiguration : IEntityTypeConfiguration<Choice>
 
         builder.Property(c => c.Id).HasColumnName("Id").IsRequired();
         builder.Property(c => c.QuestionId).HasColumnName("QuestionId");
-        builder.Property(c => c.Text).HasColumnName("Text");
-        builder.Property(c => c.Image).HasColumnName("Image");
+        builder.Property(c => c.Text).HasColumnName("Text").IsRequired(false);
+        builder.Property(c => c.Image).HasColumnName("Image").IsRequired(false);
         builder.Property(c => c.IsAnswer).HasColumnName("IsAnswer");
         builder.Property(c => c.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(c => c.UpdatedDate).HasColumnName("UpdatedDate");

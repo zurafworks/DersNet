@@ -16,12 +16,12 @@ public class Choice : Entity<Guid>
     /// <summary>
     /// cevap içeriği
     /// </summary>
-    public string Text { get; set; }
+    public string? Text { get; set; }
 
     /// <summary>
     /// cevap resmi
     /// </summary>
-    public string Image { get; set; }
+    public string? Image { get; set; }
 
     /// <summary>
     /// doğru cevap mı?

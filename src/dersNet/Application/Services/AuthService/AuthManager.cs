@@ -56,7 +56,16 @@ public class AuthManager : IAuthService
             userId,
             _tokenOptions.RefreshTokenTTL
         );
+        try { 
         await _refreshTokenRepository.DeleteRangeAsync(refreshTokens);
+        }catch(Exception ex) { 
+        foreach(var token in refreshTokens)
+            {
+                token.DeletedDate = DateTime.Now;
+            }
+
+            await _refreshTokenRepository.UpdateRangeAsync(refreshTokens);
+        }
     }
 
     public async Task<RefreshToken?> GetRefreshTokenByToken(string token)

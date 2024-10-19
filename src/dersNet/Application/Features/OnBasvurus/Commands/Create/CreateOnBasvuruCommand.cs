@@ -28,7 +28,7 @@ public class CreateOnBasvuruCommand : IRequest<CreatedOnBasvuruResponse>,/* ISec
 
     public string[] Roles => [Admin, Write, OnBasvurusOperationClaims.Create];
 
-    public bool BypassCache { get; }
+    public bool BypassCache { get; } = true;
     public string? CacheKey { get; }
     public string[]? CacheGroupKey => ["GetOnBasvurus"];
 

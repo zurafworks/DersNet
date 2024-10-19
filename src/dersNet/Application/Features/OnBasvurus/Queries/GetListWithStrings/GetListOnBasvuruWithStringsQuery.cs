@@ -12,13 +12,13 @@ using static Application.Features.OnBasvurus.Constants.OnBasvurusOperationClaims
 using Application.Features.OnBasvurus.Queries.GetList;
 
 namespace Application.Features.OnBasvurus.Queries.GetListWithStrings;
-public class GetListOnBasvuruWithStringsQuery : IRequest<GetListResponse<GetListOnBasvuruWithStringsListItemDto>>, ISecuredRequest, ICachableRequest
+public class GetListOnBasvuruWithStringsQuery : IRequest<GetListResponse<GetListOnBasvuruWithStringsListItemDto>>, ISecuredRequest/*, ICachableRequest*/
 {
     public PageRequest PageRequest { get; set; }
 
     public string[] Roles => [Admin, Read];
 
-    public bool BypassCache { get; }
+    public bool BypassCache { get; } = true;
     public string? CacheKey => $"GetListOnBasvurus({PageRequest.PageIndex},{PageRequest.PageSize})";
     public string? CacheGroupKey => "GetOnBasvurus";
     public TimeSpan? SlidingExpiration { get; }

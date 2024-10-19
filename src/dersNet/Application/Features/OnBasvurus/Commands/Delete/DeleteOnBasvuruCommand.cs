@@ -19,7 +19,7 @@ public class DeleteOnBasvuruCommand : IRequest<DeletedOnBasvuruResponse>, ISecur
 
     public string[] Roles => [Admin, Write, OnBasvurusOperationClaims.Delete];
 
-    public bool BypassCache { get; }
+    public bool BypassCache { get; } = true;
     public string? CacheKey { get; }
     public string[]? CacheGroupKey => ["GetOnBasvurus"];
 

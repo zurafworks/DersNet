@@ -10,5 +10,6 @@ public class GetListPackListItemDto : IDto
     public string Description { get; set; }
     public decimal Price { get; set; }
     public PriceCurrency PriceCurrency { get; set; }
+    public string PriceCurrencyStr { get; set; }
     public int TaxRate { get; set; }
 }

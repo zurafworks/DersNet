@@ -12,8 +12,8 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
 
         builder.Property(q => q.Id).HasColumnName("Id").IsRequired();
         builder.Property(q => q.LessonId).HasColumnName("LessonId");
-        builder.Property(q => q.Text).HasColumnName("Text");
-        builder.Property(q => q.Image).HasColumnName("Image");
+        builder.Property(q => q.Text).HasColumnName("Text").IsRequired(false);
+        builder.Property(q => q.Image).HasColumnName("Image").IsRequired(false);
         builder.Property(q => q.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(q => q.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(q => q.DeletedDate).HasColumnName("DeletedDate");

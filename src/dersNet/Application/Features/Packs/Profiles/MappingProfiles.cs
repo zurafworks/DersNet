@@ -23,5 +23,7 @@ public class MappingProfiles : Profile
         CreateMap<Pack, GetByIdPackResponse>().ReverseMap();
         CreateMap<Pack, GetListPackListItemDto>().ReverseMap();
         CreateMap<IPaginate<Pack>, GetListResponse<GetListPackListItemDto>>().ReverseMap();
+        CreateMap<IPaginate<GetListPackListItemDto>, GetListResponse<GetListPackListItemDto>>();
+
     }
 }
