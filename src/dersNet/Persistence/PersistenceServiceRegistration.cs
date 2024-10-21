@@ -14,14 +14,14 @@ public static class PersistenceServiceRegistration
     {
         //services.AddDbContext<BaseDbContext>(options => options.UseInMemoryDatabase("BaseDb"));
 
-        //services.AddDbContext<BaseDbContext>(options =>
-        //    options.UseSqlServer(configuration.GetConnectionString("DevelopmentDb")));
+        services.AddDbContext<BaseDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DevelopmentDb")));
 
         //services.AddDbContext<BaseDbContext>(options =>
         //    options.UseSqlServer(configuration.GetConnectionString("LocalTestDb")));
 
-        services.AddDbContext<BaseDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("ProductionDb")));
+        //services.AddDbContext<BaseDbContext>(options =>
+        //    options.UseSqlServer(configuration.GetConnectionString("ProductionDb")));
 
 
         services.AddDbMigrationApplier(buildServices => buildServices.GetRequiredService<BaseDbContext>());
